@@ -1,0 +1,30 @@
+{
+  "name": "ESP32 Binary Clock",
+
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "runArgs": [
+    "--device=/dev/ttyUSB0",
+    "--group-add=18"
+  ],
+
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/Binary-Clock,type=bind",
+  "workspaceFolder": "/workspaces/Binary-Clock",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "platformio.platformio-ide",
+        "ms-vscode.cpptools",
+        "anthropic.claude-code"
+      ],
+      "settings": {
+        "platformio-ide.useBuiltinPIOCore": false
+      }
+    }
+  },
+
+  "postCreateCommand": "pio pkg install"
+}
